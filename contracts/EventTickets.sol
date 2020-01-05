@@ -59,7 +59,7 @@ contract EventTickets {
         string memory website, 
         uint totalTickets
     ) 
-    public 
+    public  
     {
         owner = msg.sender;
         myEvent.description = description;
