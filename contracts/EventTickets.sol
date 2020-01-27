@@ -4,6 +4,8 @@ pragma solidity ^0.5.0;
         The EventTickets contract keeps track of the details and ticket sales of one event.
      */
 
+     //test git
+
 contract EventTickets {
 
     /*
