@@ -89,16 +89,13 @@ contract EventTicketsV2 {
             4. sales
             5. isOpen
     */
-    function readEvent(uint _eventId)
+    function readEvent(uint eventId)
         public
+        view
         returns(string memory description, string memory website, uint totalTickets, uint sales, bool isOpen)
     {
-        description = events[_eventId].description;
-        website = events[_eventId].website;
-        totalTickets = events[_eventId].totalTickets;
-        sales = events[_eventId].sales;
-        isOpen = events[_eventId].isOpen;
-        return (description, website, totalTickets, sales, isOpen);
+        Event memory e = events[eventId];
+        return (e.description, e.website, e.totalTickets, e.sales, e.isOpen);
     }
 
     /*
@@ -156,12 +153,10 @@ contract EventTicketsV2 {
         This function takes one parameter, an event ID
         This function returns a uint, the number of tickets that the msg.sender has purchased.
     */
-    function getBuyerNumberTickets (uint _eventId)
-        public
-        returns(uint numTickets)
-    {
-        return(events[_eventId].buyers[msg.sender]);
+    function getBuyerNumberTickets(uint eventId) public view returns(uint) {
+        return events[eventId].buyers[msg.sender];
     }
+
 
     /*
         Define a function called endSale()
